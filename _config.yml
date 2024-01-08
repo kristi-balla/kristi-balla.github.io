@@ -57,7 +57,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: dark
+theme_mode:
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
@@ -67,7 +67,7 @@ theme_mode: dark
 # img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-# avatar:
+avatar: assets/img/avatar/android-chrome-192x192.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
