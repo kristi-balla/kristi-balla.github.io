@@ -4,7 +4,7 @@ date: 2024-01-08 14:09:59 +/-1234
 categories: [JOKES]
 tags: [number-42]
 toc: false
-comments: false
+comments: true
 math: false
 mermaid: false
 ---
