@@ -6,7 +6,7 @@ I enjoy spending my free time on different projects, trying to deepen the knowle
 
 ## This Repository
 
-This repository holds the code for my personal website/blog. It was generated using [Jakyll](https://jekyllrb.com/docs/) with the [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/) theme. It is hosted with ❤️ by [GitHub Pages](https://pages.github.com/).
+This repository holds the code for my personal website/blog. It was generated using [Jekyll](https://jekyllrb.com/docs/) with the [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/) theme and the [scholar](https://github.com/inukshuk/jekyll-scholar) plugin. It is hosted with ❤️ by [GitHub Pages](https://pages.github.com/).
 
 ## License
 
