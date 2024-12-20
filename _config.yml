@@ -89,7 +89,7 @@ comments:
     category_id: DIC_kwDOLCJJqs4CcSOV
     mapping: pathname
     input_position: top
-    lang: {{site.lang}}
+    lang: { { site.lang } }
     reactions_enabled: 1
     crossorigin: anonymous
 
@@ -108,6 +108,16 @@ paginate: 10
 
 # The base URL of your site
 baseurl: ""
+
+plugins:
+  - jekyll-scholar
+
+scholar:
+  style: apa
+  locale: en
+  sort_by: none
+  order: ascending
+  source: ./_references
 
 # ------------ The following options are not recommended to be modified ------------------
 
