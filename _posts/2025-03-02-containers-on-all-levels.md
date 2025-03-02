@@ -17,5 +17,17 @@ The following uncovers what each tool actually does and how much heavy lifting h
 
 ## Docker
 
+Docker provides a user-friendly way to run containers. It handles image pulling, container creation, isolation, networking, and lifecycle management with a simple frontend. Let’s see this in action by running an Nginx web server inside a container.
+
+```bash
+docker run --rm -d -p 8080:80 nginx
+```
+
+Once the container is running, you can verify that Nginx is serving pages by making an HTTP request:
+
+`curl http://localhost:8080`. You should see the default Nginx welcome page in the terminal output.
+
+With just a single command, Docker handled everything! But what’s happening under the hood?
+
 
 
