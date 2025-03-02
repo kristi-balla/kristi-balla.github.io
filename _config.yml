@@ -111,6 +111,7 @@ baseurl: ""
 
 plugins:
   - jekyll-scholar
+  - jekyll-sitemap
 
 scholar:
   style: apa
