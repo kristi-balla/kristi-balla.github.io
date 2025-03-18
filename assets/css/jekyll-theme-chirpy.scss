@@ -1,0 +1,15 @@
+--- 
+--- 
+
+@use 'main
+{%- if jekyll.environment=='production' -%}
+    .bundle 
+{%- endif -%}
+';
+
+/* append your custom style below */
+
+div.scroll>.highlight {
+    overflow-y: auto;
+    max-height: 15* 1em;
+}
