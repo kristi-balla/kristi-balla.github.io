@@ -61,14 +61,14 @@ So, the container is running, but it isn't reachable from the outside! The bare 
 
 After using the provided image and setting up the necessary namespaces and cgroups, containerd hands over the execution to `runc`.
 
-## `runc`
+## RunC
 
 This was the original tool used to spin up containers. 
 
 > Practically speaking, a container consists of:
 > 
 > - a tarball of files, and 
-> 1 config file glueing it all together 
+> - 1 config file glueing it all together 
 {: .prompt-info }
 
 The tarball is the filesystem of the container: complete with all the binaries necessary to run the processes in the container. The config file is a JSON that dictates where to expect certain libraries and what to execute. Thus, in order to run the container, we need those two.
