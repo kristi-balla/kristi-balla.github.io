@@ -34,11 +34,11 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=10 CMD curl -
 CMD [ "gradle", "bootRun" ]
 ```
 
-This `Dockerfile` is where I started at. It doesn't even build the application explicitly, but just starts off by running the server. It also defines a `HEALTHCHECK` that will be used by the benchmarking script later on.
+This [`Dockerfile`](https://github.com/kristi-balla/java-demo/blob/main/htmx/naive.Dockerfile) is where I started at. It doesn't even build the application explicitly, but just starts off by running the server. It also defines a `HEALTHCHECK` that will be used by the benchmarking script later on.
 
 ## Multi Stage
 
-Since the [naive](#naive-implementation) implementation contains all the build dependencies and tools in the resulting image, it is thick. We can mitigate this by splitting the building and running into two stages:
+Since the [naive](#naive-implementation) implementation contains all the build dependencies and tools in the resulting image, it is thick. We can mitigate this by splitting the building and running into two stages. Here's the updated [`Dockerfile`](https://github.com/kristi-balla/java-demo/blob/main/htmx/multi-stage.Dockerfile):
 
 ```Dockerfile
 FROM gradle:8.14.3-jdk21 AS build
@@ -60,7 +60,7 @@ A better approach to this would have been adding another stage to build the depe
 
 ## Custom JRE
 
-The [multi-stage](#multi-stage) implementation moves the fat JAR in another stage. Yet that base image still contains some bloatware and unnecessary modules. The JRE of the distroless base image is still significantly contributing to the size of our image. It contains a lot of modules the application might *potentially* need, but doesn't actually use. However, you as a developer know (or can easily find out 😜) exactly what your application needs and can restrict the number of those modules to the absolutely necessary:
+The [multi-stage](#multi-stage) implementation moves the fat JAR in another stage. Yet that base image still contains some bloatware and unnecessary modules. The JRE of the distroless base image is still significantly contributing to the size of our image. It contains a lot of modules the application might *potentially* need, but doesn't actually use. However, you as a developer know (or can easily find out 😜) exactly what your application needs and can restrict the number of those modules to the absolutely necessary. Here's the updated [`Dockerfile`](https://github.com/kristi-balla/java-demo/blob/main/htmx/custom-jre.Dockerfile):
 
 ```Dockerfile
 FROM gradle:8.14.3-jdk21 AS build
@@ -146,7 +146,7 @@ HEALTHCHECK --interval=5s --timeout=15s --start-period=2s --retries=20 CMD ["wge
 ENTRYPOINT [ "/app" ]
 ```
 
-In case you were wondering, I am not starting from a gradle-based image here, but rather use GraalVM. The GraalVM image provides the necessary tools for the `nativeCompile` task to do its work. However, our application won't "just" work with this `Dockerfile`. One also has to add the `id 'org.graalvm.buildtools.native' version '0.10.6'` plugin to `build.gradle`. In addition to that, one has to slightly modify the arguments passed to the compile command:
+In case you were wondering, I am not starting from a gradle-based image here, but rather use GraalVM. The GraalVM image provides the necessary tools for the `nativeCompile` task to do its work. However, our application won't "just" work with this [`Dockerfile`](https://github.com/kristi-balla/java-demo/blob/main/native-htmx/Dockerfile). One also has to add the `id 'org.graalvm.buildtools.native' version '0.10.6'` plugin to `build.gradle`. In addition to that, one has to slightly modify the arguments passed to the compile command:
 
 ```groovy
 graalvmNative {
